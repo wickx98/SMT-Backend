@@ -1,16 +1,16 @@
 package com.smt.QA.dtos;
 
 public class LoginUserDto {
-    private String email;
+    private String epfNumber;
     private String password;
 
-    // Getter and Setter for email
-    public String getEmail() {
-        return email;
+    // Getter and Setter for epfNumber
+    public String getEpfNumber() {
+        return epfNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEpfNumber(String epfNumber) {
+        this.epfNumber = epfNumber;
     }
 
     // Getter and Setter for password

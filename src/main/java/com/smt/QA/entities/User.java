@@ -23,7 +23,7 @@ public class User implements UserDetails {
     private String fullName;
 
     @Column(unique = true, length = 100, nullable = false)
-    private String email;
+    private String epfNumber;
 
     @Column(nullable = false)
     private String password;
@@ -43,7 +43,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return epfNumber;
     }
 
     @Override
@@ -88,12 +88,12 @@ public class User implements UserDetails {
         this.fullName = fullName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEpfNumber() {
+        return epfNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEpfNumber(String epfNumber) {
+        this.epfNumber = epfNumber;
     }
 
     public void setPassword(String password) {
