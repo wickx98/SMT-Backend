@@ -1,6 +1,6 @@
 services:
   spring-boot-app:
-    image: wickx98/SMT-Backend:latest
+    image: wickx98/smt-backend:latest
     container_name: spring-boot-app
     ports:
       - "8081:8080"

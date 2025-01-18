@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'wickx98/SMT-Backend'
+        DOCKER_IMAGE = 'wickx98/smt-backend'
         DOCKER_HUB_USERNAME = 'wickx98'
         GIT_REPO_URL = 'https://github.com/wickx98/SMT-Backend.git'
     }
