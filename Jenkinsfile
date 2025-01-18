@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'wickx98/weatherapp'
+        DOCKER_IMAGE = 'wickx98/SMT-Backend'
         DOCKER_HUB_USERNAME = 'wickx98'
-        GIT_REPO_URL = 'https://github.com/wickx98/weatherApp.git'
+        GIT_REPO_URL = 'https://github.com/wickx98/SMT-Backend.git'
     }
     stages {
         stage('Checkout') {

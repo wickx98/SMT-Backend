@@ -2,7 +2,7 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-COPY target/weatherapp-0.0.1-SNAPSHOT.jar app.jar
+COPY target/SMT-Backend-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8081
 
