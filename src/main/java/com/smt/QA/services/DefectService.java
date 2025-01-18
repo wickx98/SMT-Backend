@@ -27,4 +27,8 @@ public class DefectService {
         return defectRepository.findByType(type);
     }
 
+    public List<Defect> getALLDefects(){
+        return (List<Defect>) defectRepository.findAll();
+    }
+
 }

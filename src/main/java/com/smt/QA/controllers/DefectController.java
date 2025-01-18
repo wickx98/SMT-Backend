@@ -27,8 +27,14 @@ public class DefectController {
     }
 
     // Get defects by type
+    @GetMapping("/all-defects")
+    public ResponseEntity<List<Defect>> getDefectsByType() {
+        List<Defect> defects = defectService.getALLDefects();
+        return ResponseEntity.ok(defects);
+    }
+
     @GetMapping("/defects")
-    public ResponseEntity<List<Defect>> getDefectsByType(@RequestParam String type) {
+    public ResponseEntity<List<Defect>> getAllDefects(@RequestParam String type) {
         System.out.println("Received type: " + type);  // Add logging to see if type is passed correctly
         List<Defect> defects = defectService.getDefectByType(type);
         return ResponseEntity.ok(defects);
