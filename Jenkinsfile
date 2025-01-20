@@ -4,6 +4,7 @@ pipeline {
         DOCKER_IMAGE = 'wickx98/smt-backend'
         DOCKER_HUB_USERNAME = 'wickx98'
         GIT_REPO_URL = 'https://github.com/wickx98/SMT-Backend.git'
+        PIPELINE_TAG = "${env.JOB_NAME}-${env.BUILD_ID}"  // Jenkins Pipeline ID as a tag
     }
     stages {
         stage('Checkout') {
@@ -47,28 +48,29 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def tag = "${DOCKER_IMAGE}:latest"
+                    def tag = "${DOCKER_IMAGE}:${PIPELINE_TAG}"
                     echo 'Building Docker image...'
                     docker.build(tag)
                 }
             }
         }
-        stage('security scan'){
+
+        stage('Security Scan') {
             steps {
-                 script {
+                script {
                     echo 'Security scan...'
                     bat """
-                         docker scout cves ${DOCKER_IMAGE}:latest
+                         docker scout cves ${DOCKER_IMAGE}:${PIPELINE_TAG}
                          """
                 }
             }
         }
+
         stage('Connect to Docker Hub') {
             steps {
                 script {
                     try {
                         echo 'Logging into Docker Hub using credentials...'
-                        // Docker login using the provided credentials
                         withCredentials([string(credentialsId: 'dockerHubPass', variable: 'dockerPass')]) {
                             bat """
                                 docker login -u ${DOCKER_HUB_USERNAME} -p ${dockerPass}
@@ -88,7 +90,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        def tag = "${DOCKER_IMAGE}:latest"
+                        def tag = "${DOCKER_IMAGE}:${PIPELINE_TAG}"
                         echo 'Pushing Docker image to Docker Hub...'
                         docker.image(tag).push()
 
